@@ -7,6 +7,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const authRoute = require("./routes/auth");
 const usersRoute = require("./routes/users");
+const logsRoute = require("./routes/logs");
 
 mongoose
   .connect(process.env.MONGO_URL, {
@@ -27,6 +28,7 @@ app.use(morgan("common"));
 app.use(express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
+app.use("/api/logs", logsRoute);
 
 const PORT = process.env.PORT || 8800;
 app.listen(PORT, () => {
